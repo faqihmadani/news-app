@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useState, componentDidMount } from "react";
 
 const Navbar = () => {
     const router = useRouter()
@@ -13,8 +13,9 @@ const Navbar = () => {
             setColor(false)
         }
     }
-
-    //window.addEventListener('scroll', handleChangeColor)
+    // componentDidMount(
+    //     window.addEventListener('scroll', handleChangeColor)
+    // )
 
     return (
         <header className={`text-gray-600 body-font mb-10 flex justify-center fixed w-full z-50 ${color ? 'bg-blue-200' : 'bg-white'} transition ease-in-out duration-300`}>
