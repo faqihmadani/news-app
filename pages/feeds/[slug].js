@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router';
 import CardNews from '../../components/CardNews';
 import Paginator from '../../components/Paginator';
 
@@ -10,13 +9,19 @@ const Feeds = ({ articles, pageNumber }) => {
         }
     }
 
+    const handleNext = (pageNumber, router) => {
+        if (pageNumber <= 3) {
+            router.push(`/feeds/${pageNumber + 1}`)
+        }
+    }
+
     return (
         <div>
             <Head>
                 <title>today news | Feeds</title>
             </Head>
             <div className='w-11/12 md:w-10/12 lg:w-9/12 mx-auto '>
-                <h1 className="text-3xl font-bold underline">Today Feeds</h1>
+                <h1 className="text-3xl font-bold underline pt-20">Today Feeds</h1>
                 {articles.map((article, index) => {
                     return (
                         <div key={index}>
@@ -24,7 +29,7 @@ const Feeds = ({ articles, pageNumber }) => {
                         </div>
                     )
                 })}
-                <Paginator pageNumber={pageNumber} handlePrev={handlePrev} />
+                <Paginator pageNumber={pageNumber} handlePrev={handlePrev} handleNext={handleNext} />
             </div>
         </div>
     );
@@ -33,7 +38,7 @@ const Feeds = ({ articles, pageNumber }) => {
 export const getServerSideProps = async (pageContext) => {
     const pageNumber = pageContext.query.slug
 
-    if (!pageNumber || pageNumber < 1 || pageNumber > 8) {
+    if (!pageNumber || pageNumber < 1 || pageNumber > 3) {
         return {
             props: {
                 articles: [],

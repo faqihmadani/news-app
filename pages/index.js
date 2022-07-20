@@ -32,7 +32,7 @@ export default function Home({ articles }) {
         <link rel="shortcut icon" href="./favicon.png" />
       </Head>
       <div className='w-11/12 md:w-10/12 lg:w-9/12 mx-auto '>
-        <h1 className="text-3xl font-bold mb-5">Trending News</h1>
+        <h1 className="text-3xl font-bold mb-5 pt-20">Trending News</h1>
         <Slider {...settings}>
           {articles.map((article, index) => {
             if (index <= 5) {
