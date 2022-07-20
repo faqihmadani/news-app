@@ -14,7 +14,7 @@ const Navbar = () => {
         }
     }
 
-    window.addEventListener('scroll', handleChangeColor)
+    //window.addEventListener('scroll', handleChangeColor)
 
     return (
         <header className={`text-gray-600 body-font mb-10 flex justify-center fixed w-full z-50 ${color ? 'bg-blue-200' : 'bg-white'} transition ease-in-out duration-300`}>
