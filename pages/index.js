@@ -69,7 +69,7 @@ export default function Home({ articles }) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const apiResponse = await fetch(
     `https://newsapi.org/v2/top-headlines?country=us&pageSize=12&apiKey=${process.env.API_KEY}`
   )
