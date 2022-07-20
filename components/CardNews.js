@@ -14,7 +14,7 @@ const CardNews = ({ article }) => {
                     <p className='inline-block ml-1 text-blue-600'> {article.author}</p>
                 </div>
                 <div className='flex justify-between items-start mt-3'>
-                    <a href={article.url} target="_blank" className='whitespace-nowrap bg-blue-200 px-2 py-1 rounded mt-5 hover:shadow-md transition-shadow duration-150'>Read More</a>
+                    <a href={article.url} rel="noreferrer" target="_blank" className='whitespace-nowrap bg-blue-200 px-2 py-1 rounded mt-5 hover:shadow-md transition-shadow duration-150'>Read More</a>
                 </div>
             </div>
         </div>
