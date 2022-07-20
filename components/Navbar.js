@@ -11,7 +11,7 @@ const Navbar = () => {
                 </a>
                 <nav className="flex flex-wrap items-center text-base justify-end">
                     <a onClick={() => router.push('/')} className=" hover:text-gray-900 hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out">HOME</a>
-                    <a onClick={() => router.push('/search')} className="ml-5 hover:text-gray-900 hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out">SEARCH</a>
+                    <a onClick={() => router.push('/feeds/1')} className="ml-5 hover:text-gray-900 hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out">FEEDS</a>
                     <a onClick={() => router.push('/about')} className="ml-5 hover:text-gray-900 hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out">ABOUT</a>
                 </nav>
             </div>

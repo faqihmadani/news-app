@@ -6,9 +6,11 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Slider from "react-slick";
 import CardNews from "../components/CardNews";
+import { useRouter } from "next/router";
 
 
 export default function Home({ articles }) {
+  const router = useRouter()
 
   var settings = {
     adaptiveHeight: true,
@@ -24,13 +26,13 @@ export default function Home({ articles }) {
   };
 
   return (
-    <div className="flex-1">
+    <div>
       <Head>
         <title>today news | Home</title>
         <link rel="shortcut icon" href="./favicon.png" />
       </Head>
-      <div className='w-9/12 mx-auto '>
-        <h1 className="text-xl lg:text-3xl font-bold mb-5">Trending News</h1>
+      <div className='w-11/12 md:w-10/12 lg:w-9/12 mx-auto '>
+        <h1 className="text-3xl font-bold mb-5">Trending News</h1>
         <Slider {...settings}>
           {articles.map((article, index) => {
             if (index <= 5) {
@@ -47,7 +49,7 @@ export default function Home({ articles }) {
             }
           })}
         </Slider>
-        <div className="mt-24 flex flex-col space-y-10">
+        <div className="mt-20 flex flex-col space-y-10">
           {articles.map((article, index) => {
             if (index > 5) {
               return (
@@ -58,6 +60,9 @@ export default function Home({ articles }) {
             }
           }
           )}
+        </div>
+        <div className="flex justify-center mt-5">
+          <a onClick={() => router.push('/feeds/1')} className="text-xl py-1 px-2 border border-gray-400 rounded hover:cursor-pointer">SEE MORE</a>
         </div>
       </div>
     </div>
