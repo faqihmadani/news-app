@@ -7,10 +7,13 @@ import Image from 'next/image'
 import Slider from "react-slick";
 import CardNews from "../components/CardNews";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 
 export default function Home({ articles }) {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState(true)
+
 
   var settings = {
     adaptiveHeight: true,
@@ -31,9 +34,8 @@ export default function Home({ articles }) {
         <title>today news | Home</title>
         <link rel="shortcut icon" href="./favicon.png" />
       </Head>
-      {/* {articles && */}
       <div className='w-11/12 md:w-10/12 lg:w-9/12 mx-auto '>
-        <h1 className="text-3xl font-bold mb-5 pt-20">Trending News</h1>
+        <h1 className="text-3xl font-bold mb-5 md:pt-20 pt-32 ">Trending News</h1>
         <Slider {...settings}>
           {articles.map((article, index) => {
             if (index <= 5) {
@@ -66,7 +68,6 @@ export default function Home({ articles }) {
           <a onClick={() => router.push('/feeds/1')} className="text-xl py-1 px-2 border border-gray-400 rounded hover:cursor-pointer">SEE MORE</a>
         </div>
       </div>
-      {/* } */}
     </div>
   )
 }
