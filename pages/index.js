@@ -8,9 +8,10 @@ import Slider from "react-slick";
 import CardNews from "../components/CardNews";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import CategoryMenu from "../components/CategoryMenu";
 
 
-export default function Home({ articles }) {
+export default function Home({ articles, businessJson, sportJson, healthJson }) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(true)
 
@@ -69,21 +70,38 @@ export default function Home({ articles }) {
         <div className="flex justify-center mt-5">
           <a onClick={() => router.push('/feeds/1')} className="text-xl py-2 px-7 border border-gray-300 hover:bg-gray-300  rounded hover:cursor-pointer">See More</a>
         </div>
+        <CategoryMenu route="business" category="💼 Business" posts={businessJson.articles} />
+        <CategoryMenu route="sports" category="⚽ Sports" posts={sportJson.articles} />
+        <CategoryMenu route="health" category="🏥 Health" posts={healthJson.articles} />
+
       </div>
     </div>
   )
 }
 
 export const getServerSideProps = async () => {
-  const apiResponse = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=us&pageSize=12&apiKey=${process.env.API_KEY}`
-  )
-  const apiJson = await apiResponse.json()
+  const [apiResponse, businessRes, sportRes, healthRes] = await Promise.all([
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&pageSize=12&apiKey=${process.env.API_KEY}`),
+    fetch(`https://newsapi.org/v2/top-headlines?category=business&country=us&pageSize=6&apiKey=${process.env.API_KEY}`),
+    fetch(`https://newsapi.org/v2/top-headlines?category=sport&country=us&pageSize=6&apiKey=${process.env.API_KEY}`),
+    fetch(`https://newsapi.org/v2/top-headlines?category=health&country=us&pageSize=6&apiKey=${process.env.API_KEY}`),
+  ])
+
+  const [apiJson, businessJson, sportJson, healthJson] = await Promise.all([
+    apiResponse.json(),
+    businessRes.json(),
+    sportRes.json(),
+    healthRes.json(),
+  ])
+
   const { articles } = apiJson
 
   return {
     props: {
       articles,
+      businessJson,
+      sportJson,
+      healthJson
     }
   }
 }

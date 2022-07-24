@@ -2,14 +2,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import CardNews from "../../components/CardNews";
 
-
-const Search = ({ articles, keyword }) => {
+const Business = ({ articles }) => {
     const router = useRouter()
 
     return (
         <div>
             <Head>
-                <title>today news | Search</title>
+                <title>today news | Business</title>
                 <link rel="shortcut icon" href="favicon.png" />
             </Head>
             <div className='w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 mx-auto '>
@@ -21,37 +20,24 @@ const Search = ({ articles, keyword }) => {
                         Back To Home
                     </a>
                 </div>
-                <h1 className="text-3xl font-bold ">🔍 Search for "{keyword.replaceAll('+', ' ')}"</h1>
-                {articles.length != 0 ?
-                    articles.map((article, index) => {
-                        return (
-                            <div key={index}>
-                                <CardNews article={article} />
-                            </div>
-                        )
-                    }) :
-                    <div>
-                        <h1 className="text-xl font-medium text-center md:pt-28 pt-32">"{keyword.replaceAll('+', ' ')}" not found</h1>
-                    </div>}
+                <h1 className="text-3xl font-bold ">💼 Business</h1>
+                {articles.map((article, index) => {
+                    return (
+                        <div key={index}>
+                            <CardNews article={article} />
+                        </div>
+                    )
+                })}
+
             </div>
         </div>
     );
 }
 
-export const getServerSideProps = async (pageContext) => {
-    const keyword = pageContext.query.slug
-
-    if (!keyword) {
-        return {
-            props: {
-                articles: [],
-                keyword: ''
-            }
-        }
-    }
+export const getServerSideProps = async () => {
 
     const apiResponse = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=us&q=${keyword}&apiKey=${process.env.API_KEY}`
+        `https://newsapi.org/v2/top-headlines?country=us&category=business&pageSize=15&apiKey=${process.env.API_KEY}`
     )
     const apiJson = await apiResponse.json()
     const { articles } = apiJson
@@ -59,8 +45,7 @@ export const getServerSideProps = async (pageContext) => {
     return {
         props: {
             articles,
-            keyword,
         }
     }
 }
-export default Search;
+export default Business;
