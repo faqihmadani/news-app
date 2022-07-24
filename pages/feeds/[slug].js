@@ -19,9 +19,10 @@ const Feeds = ({ articles, pageNumber }) => {
         <div>
             <Head>
                 <title>today news | Feeds</title>
+                <link rel="shortcut icon" href="favicon.png" />
             </Head>
-            <div className='w-11/12 md:w-10/12 lg:w-9/12 mx-auto '>
-                <h1 className="text-3xl font-bold underline md:pt-24 pt-32">Today Feeds</h1>
+            <div className='w-11/12 md:w-10/12 lg:w-9/12 xl:w-8/12 mx-auto '>
+                <h1 className="text-3xl font-bold md:pt-28 pt-32">📺 Today Feeds</h1>
                 {articles.map((article, index) => {
                     return (
                         <div key={index}>

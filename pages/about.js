@@ -1,7 +1,16 @@
+import Head from "next/head";
+
 const About = () => {
     return (
         <div>
-            <h1 className="text-blue-500 text-3xl text-center font-sans font-medium md:pt-24 pt-32">About News App</h1>
+            <Head>
+                <title>today news | About</title>
+                <link rel="shortcut icon" href="./favicon.png" />
+            </Head>
+            <h1 className="text-gray-900 text-3xl text-center font-sans font-medium md:pt-28 pt-32">About News App</h1>
+            <p>
+
+            </p>
         </div>
     );
 }
