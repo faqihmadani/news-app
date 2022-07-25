@@ -21,7 +21,7 @@ const Search = ({ articles, keyword }) => {
                         Back To Home
                     </a>
                 </div>
-                <h1 className="text-3xl font-bold ">🔍 Search for &quot{keyword.replaceAll('+', ' ')}&quot</h1>
+                <h1 className="text-3xl font-bold ">🔍 Search for &quot;{keyword.replaceAll('+', ' ')}&quot;</h1>
                 {articles.length != 0 ?
                     articles.map((article, index) => {
                         return (
@@ -31,7 +31,7 @@ const Search = ({ articles, keyword }) => {
                         )
                     }) :
                     <div>
-                        <h1 className="text-xl font-medium text-center md:pt-28 pt-32">&quot{keyword.replaceAll('+', ' ')}&quot not found</h1>
+                        <h1 className="text-xl font-medium text-center md:pt-28 pt-32">&quot;{keyword.replaceAll('+', ' ')}&quot; not found</h1>
                     </div>}
             </div>
         </div>
