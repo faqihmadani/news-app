@@ -44,8 +44,8 @@ const Navbar = () => {
                     <a onClick={() => {router.push('/'); setOpen(!open) }} className={`mt-5 md:mt-0 hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out ${router.asPath === '/' ? 'underline' : ''}`}>HOME</a>
                     <a onClick={() => {router.push('/feeds/1'); setOpen(!open)}} className={`md:ml-5  hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out ${router.asPath.includes('/feeds/1') ? 'underline' : ''}`}>FEEDS</a>
                     <a onClick={() => {router.push('/about'); setOpen(!open)}} className={`md:ml-5  hover:cursor-pointer hover:transform hover:-translate-y-[2px] transition-all duration-100 ease-in-out ${router.asPath === '/about' ? 'underline' : ''}`}>ABOUT</a>
-                    <form className=" md:ml-5 flex items-center" onSubmit={(e) => handleSearch(e)}>
-                        <input onChange={(e) => { setKeyword(e.target.value); setOpen(!open) }} type="text" placeholder="Search News" className="border-gray-300 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+                    <form className=" md:ml-5 flex items-center" onSubmit={(e) => {handleSearch(e); setOpen(!open) }}>
+                        <input onChange={(e) => { setKeyword(e.target.value)}} type="text" placeholder="Search News" className="border-gray-300 shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
                         <button type="submit" className="ml-3">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
